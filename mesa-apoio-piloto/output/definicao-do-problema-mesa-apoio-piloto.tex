@@ -1,0 +1,346 @@
+% ============================================================
+% Template LaTeX ABNT NBR 14724/2024 — IFB
+% Compatível com pdflatex + abntex2cite
+% ============================================================
+
+\documentclass[
+  12pt,
+  a4paper,
+  oneside,
+  brazil
+]{article}
+
+% ── Codificação e Idioma ──────────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+
+% ── Fonte Times New Roman ─────────────────────────────────────────────────────
+\usepackage{mathptmx}
+
+% ── Geometria da página — margens ABNT anverso ────────────────────────────────
+\usepackage[
+  a4paper,
+  left=3cm,
+  top=3cm,
+  right=2cm,
+  bottom=2cm,
+  headheight=14pt,
+  headsep=0.5cm
+]{geometry}
+
+% ── Espaçamento 1,5 entre linhas (ABNT) ──────────────────────────────────────
+\usepackage{setspace}
+\onehalfspacing
+
+% ── Recuo do parágrafo: 1,25cm (ABNT) ────────────────────────────────────────
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+
+% ── Formatação de seções — numeração progressiva NBR 6024 ────────────────────
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\normalsize\bfseries\MakeUppercase}
+  {\thesection\quad}
+  {0em}{}
+
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection\quad}
+  {0em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\itshape}
+  {\thesubsubsection\quad}
+  {0em}{}
+
+\titleformat{\paragraph}[runin]
+  {\normalfont\normalsize\itshape}
+  {\theparagraph\quad}
+  {0em}{}[\hspace{0.5em}]
+
+\titleformat{\subparagraph}[runin]
+  {\normalfont\normalsize}
+  {\thesubparagraph\quad}
+  {0em}{}[\hspace{0.5em}]
+
+\titlespacing*{\section}      {0pt}{18pt}{12pt}
+\titlespacing*{\subsection}   {0pt}{18pt}{6pt}
+\titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
+\titlespacing*{\paragraph}    {0pt}{12pt}{0pt}
+
+% Seções primárias iniciam em nova página
+\newcommand{\secbreak}{\clearpage}
+\let\oldsection\section
+\renewcommand{\section}{\secbreak\oldsection}
+
+% ── Numeração de páginas — canto superior direito, 10pt ──────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\fontsize{10}{12}\selectfont\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[R]{\fontsize{10}{12}\selectfont\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% ── Tabelas ───────────────────────────────────────────────────────────────────
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\renewcommand{\arraystretch}{1.3}
+
+% ── Legendas ─────────────────────────────────────────────────────────────────
+\usepackage{caption}
+\DeclareCaptionFormat{abnt}{\fontsize{10}{12}\selectfont#1#2#3}
+\captionsetup{
+  format=abnt,
+  justification=centering,
+  singlelinecheck=false,
+  labelsep=emdash,
+  position=above,
+  skip=3pt
+}
+
+\newcommand{\fonte}[1]{%
+  \begin{flushleft}
+    \fontsize{10}{12}\selectfont Fonte: #1
+  \end{flushleft}
+}
+
+% ── Listas ───────────────────────────────────────────────────────────────────
+\usepackage{enumitem}
+\setlist{nosep, leftmargin=*}
+\def\tightlist{}
+
+% ── Sumário ──────────────────────────────────────────────────────────────────
+\usepackage{tocloft}
+\renewcommand{\contentsname}{SUMÁRIO}
+
+% ── Hyperlinks ───────────────────────────────────────────────────────────────
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks, colorlinks=false, breaklinks=true]{hyperref}
+
+% ── Citações longas ──────────────────────────────────────────────────────────
+\usepackage{quoting}
+\quotingsetup{font=small, indentfirst=false, vskip=\baselineskip}
+
+% ── Figuras ──────────────────────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{float}
+
+% ── Referências ABNT ─────────────────────────────────────────────────────────
+\usepackage[
+  alf,
+  abnt-emphasize=bf,
+  abnt-etal-cite=2,
+  abnt-etal-list=0
+]{abntex2cite}
+
+\date{}
+
+% ============================================================
+\begin{document}
+
+% ══════════════════════════════════════════════════════════════════════════════
+% CAPA — NBR 14724/2024
+% ══════════════════════════════════════════════════════════════════════════════
+\begin{titlepage}
+  \thispagestyle{empty}
+  \begin{center}
+
+    \includegraphics[width=0.4\textwidth]{ifb_vs_dp.png}\\[1.8em]
+
+    {\normalsize\bfseries
+      Instituto Federal de Educação, Ciência e Tecnologia de Brasília --- IFB\\[0.3em]
+      \textit{Campus} Samambaia\\[0.3em]
+      Curso Superior de Tecnologia em Design de Produto
+    }
+
+    \vfill
+
+    {\large\bfseries
+      DEFINIÇÃO DO PROBLEMA --- MESA DE APOIO PILOTO
+    }
+
+    \vfill
+
+    {\normalsize Brasília/DF\\2026}
+
+  \end{center}
+\end{titlepage}
+\setcounter{page}{2}
+
+% ══════════════════════════════════════════════════════════════════════════════
+% FOLHA DE ROSTO — NBR 14724/2024
+% ══════════════════════════════════════════════════════════════════════════════
+\begin{titlepage}
+  \thispagestyle{empty}
+  \begin{center}
+
+    {\normalsize\bfseries
+      VICTOR COSTA\\
+      ANNA JI\\
+      LUÍS COSTA
+    }
+
+    \vfill
+
+    {\large\bfseries DEFINIÇÃO DO PROBLEMA --- MESA DE APOIO PILOTO}
+
+    \vfill
+
+    \begin{flushright}
+      \begin{minipage}{0.5\textwidth}
+        \normalsize
+        Relatório de etapa de projeto apresentado ao Curso Superior de
+        Tecnologia em Design de Produto do Instituto Federal de Educação,
+        Ciência e Tecnologia de Brasília --- IFB, \textit{Campus} Samambaia,
+        como requisito parcial para aprovação na disciplina de Metodologia
+        e Prática de Projeto.
+
+        \vspace{1em}
+        Professora: Profª. Drª. Fernanda Torres
+      \end{minipage}
+    \end{flushright}
+
+    \vfill
+
+    {\normalsize Brasília/DF --- 2026}
+
+  \end{center}
+\end{titlepage}
+
+% ══════════════════════════════════════════════════════════════════════════════
+% RESUMO — NBR 6028/2003
+% ══════════════════════════════════════════════════════════════════════════════
+\clearpage
+\thispagestyle{empty}
+\begin{center}
+  {\normalsize\bfseries RESUMO}
+\end{center}
+
+\vspace{1em}
+\noindent
+O presente documento registra a etapa de definição do problema do projeto
+Mesa de Apoio Piloto, desenvolvido no âmbito da disciplina de Metodologia
+e Prática de Projeto. São apresentados o escopo do produto, suas funções,
+o público-alvo e as referências estéticas que orientarão o desenvolvimento
+projetual. O produto consiste em uma mesa de apoio/cabeceira de design autoral
+com identidade estética fundamentada na arquitetura modernista brasileira,
+com linguagem formal inspirada em Brasília, voltada a adultos das classes A e B
+que valorizam mobiliário com referência cultural. As diretrizes formais,
+cromáticas e materiais apresentadas fundamentam-se no vocabulário visual
+da cidade e do modernismo nacional, com destaque para o freijó como material
+de interesse e a construção modular por encaixe como abordagem construtiva
+a ser investigada.
+
+\vspace{1em}
+\noindent\textbf{Palavras-chave:} design de produto; mobiliário autoral;
+modernismo brasileiro; definição de problema; Brasília.
+
+% ══════════════════════════════════════════════════════════════════════════════
+% SUMÁRIO — NBR 14724/2024
+% ══════════════════════════════════════════════════════════════════════════════
+\clearpage
+\thispagestyle{empty}
+\tableofcontents
+
+% ══════════════════════════════════════════════════════════════════════════════
+% CONTEÚDO
+% ══════════════════════════════════════════════════════════════════════════════
+
+\section{Definição do Problema}
+
+\subsection{O que?}
+
+O problema de projeto consiste em desenvolver uma mesa de cabeceira / mesa
+de apoio de sala de estar de design autoral com identidade estética
+fundamentada na arquitetura modernista brasileira. A proposta exige uma
+estrutura modular em madeira com painel frontal trabalhado e apoios laterais
+escultóricos, de modo que o móvel cumpra sua função de suporte e
+armazenamento sem abrir mão de uma presença visual própria no ambiente.
+O objetivo é conciliar funcionalidade técnica, referência cultural explícita
+e viabilidade produtiva, utilizando materiais disponíveis no mercado regional.
+
+\subsection{Para que?}
+
+A mesa de apoio deve atender aos seguintes requisitos:
+
+\begin{itemize}
+  \item \textbf{Dimensões versáteis}: Deve atender dentro das margens
+    ergonômicas tanto o uso como mesa de cabeceira (quarto), quanto mesa
+    de apoio (sala de estar);
+  \item \textbf{Armazenamento e organização de objetos decorativos}: prateleiras
+    internas/externas e/ou módulos internos para acomodar pequenos objetos
+    variados de acordo com o contexto de uso;
+\end{itemize}
+
+\subsection{Para quem?}
+
+O público-alvo são adultos entre 30 e 50 anos, das classes A e B, moradores
+de apartamentos ou casas com arquitetura contemporânea ou minimalista.
+São pessoas que já realizaram as principais aquisições do mobiliário doméstico
+e passam a buscar substituição por peças de maior identidade: consumidores
+que valorizam design autoral brasileiro, investem em objetos com referência
+cultural e buscam diferenciação em relação ao mobiliário industrializado em
+série disponível nas grandes redes.
+
+Esse público reconhece referências da arquitetura e do modernismo nacional
+e, quando encontra uma peça com história e autoria, tende a pagar mais por ela.
+
+\subsection{Referências Estéticas}
+
+\subsubsection{Formas}
+
+Três matrizes formais orientam o projeto.
+
+A geometrização marcante e a silhueta baixa seguem a tradição do mobiliário
+\textit{mid-century} e se alinham com a arquitetura de Brasília. Quando
+pensada em composição com um sofá ou uma cama, a proporção horizontalizada
+e a altura reduzida liberam a parede como plano de fundo, traçando um paralelo
+com o céu amplamente visível por conta dos prédios residenciais da cidade,
+limitados a seis andares.
+
+Os perfis em arco côncavo têm referência direta nas estruturas de Oscar
+Niemeyer: os pilotis curvos, as arcadas do Palácio do Planalto, a estrutura
+do Congresso Nacional. A curvatura distribui a carga para as extremidades e
+cria uma tensão visual entre a massa horizontal da composição (objeto de apoio
++ objeto principal associado) e os apoios, que devem conversar com o conceito
+de pilotis.
+
+Padrões geométricos e modulação completam a linguagem formal, remetendo à
+racionalidade urbana de Brasília: o traçado do plano piloto, o ritmo das
+fachadas da Esplanada dos Ministérios, as tramas em azulejo do modernismo
+brasileiro.
+
+\subsubsection{Cores e Materiais}
+
+A paleta deve nascer do material, não de uma decisão de cor: madeira natural
+em tons âmbar e mel no plano dominante, com o contraste surgindo naturalmente
+do recuo dos recortes e interiores, que ficam em sombra, sem pigmento nem
+acabamento opaco. O uso de concreto, mármore e metal pode surgir como opção,
+mas o foco é a madeira.
+
+O freijó (\textit{Cordia goeldiana}) é o material de maior interesse nesse
+sentido, uma madeira brasileira de tom dourado-âmbar amplamente disponível no
+mercado nacional e com boa trabalhabilidade para usinagem. Sua associação ao
+mobiliário autoral nacional reforça a identidade cultural da peça sem recorrer
+a espécies de extração predatória; a escolha depende ainda de análise mais
+profunda sobre custos e viabilidade dentro do contexto acadêmico.
+
+A construção por encaixe é uma abordagem que seria de interesse ao projeto,
+pois favorece a produção em marcenaria de pequeno porte, reduz desperdício de
+material e permite transporte desmontado. Solução logística compatível com o
+perfil de comercialização de móveis autorais e, não por coincidência, a mesma
+lógica construtiva que estruturas modulares em madeira já provaram funcionar
+muito bem.
+
+\end{document}
