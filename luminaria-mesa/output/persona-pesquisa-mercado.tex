@@ -1,0 +1,468 @@
+% ============================================================
+% Template LaTeX ABNT NBR 14724/2024 — IFB
+% Persona e Pesquisa de Mercado — Luminária de Mesa
+% Atividade 3 — Metodologia e Prática de Projeto
+% ============================================================
+
+\documentclass[
+  12pt,
+  a4paper,
+  oneside,
+  brazil
+]{article}
+
+% ── Codificação e Idioma ──────────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+
+% ── Fonte Times New Roman ─────────────────────────────────────────────────────
+\usepackage{mathptmx}
+
+% ── Geometria da página — margens ABNT anverso ────────────────────────────────
+\usepackage[
+  a4paper,
+  left=3cm,
+  top=3cm,
+  right=2cm,
+  bottom=2cm,
+  headheight=14pt,
+  headsep=0.5cm
+]{geometry}
+
+% ── Espaçamento 1,5 entre linhas (ABNT) ──────────────────────────────────────
+\usepackage{setspace}
+\onehalfspacing
+
+% ── Recuo do parágrafo: 1,25cm (ABNT) ────────────────────────────────────────
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+
+% ── Formatação de seções — numeração progressiva NBR 6024 ────────────────────
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\normalsize\bfseries\MakeUppercase}
+  {\thesection\quad}
+  {0em}{}
+
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection\quad}
+  {0em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\itshape}
+  {\thesubsubsection\quad}
+  {0em}{}
+
+\titlespacing*{\section}      {0pt}{18pt}{12pt}
+\titlespacing*{\subsection}   {0pt}{18pt}{6pt}
+\titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
+
+% Seções primárias iniciam em nova página
+\let\oldsection\section
+\renewcommand{\section}{\clearpage\oldsection}
+
+% ── Numeração de páginas — canto superior direito, 10pt ──────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\fontsize{10}{12}\selectfont\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[R]{\fontsize{10}{12}\selectfont\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% ── Listas ───────────────────────────────────────────────────────────────────
+\usepackage{enumitem}
+\setlist{nosep, leftmargin=*}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% ── Tabelas e Quadros ─────────────────────────────────────────────────────────
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\renewcommand{\arraystretch}{1.3}
+
+% ── Legendas ─────────────────────────────────────────────────────────────────
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{emdash}{\,---\,}
+\DeclareCaptionFormat{abnt}{\fontsize{10}{12}\selectfont#1#2#3}
+\captionsetup{
+  format=abnt,
+  justification=centering,
+  singlelinecheck=false,
+  labelsep=emdash,
+  position=above,
+  skip=3pt
+}
+
+% ── Sumário e Lista de Quadros ────────────────────────────────────────────────
+\usepackage{tocloft}
+\renewcommand{\contentsname}{SUMÁRIO}
+
+\newlistof{quadros}{loq}{LISTA DE QUADROS}
+\setlength{\cftquadrosindent}{0pt}
+\setlength{\cftquadrosnumwidth}{0pt}
+\makeatletter
+\renewcommand{\listofquadros}{%
+  \section*{LISTA DE QUADROS}%
+  \@starttoc{loq}%
+}
+\makeatother
+
+\newcommand{\quadrotitle}[2]{%
+  \vspace{1em}%
+  \phantomsection%
+  \addcontentsline{loq}{quadros}{Quadro #1 --- #2}%
+  \noindent\textbf{Quadro #1 --- #2}\par\vspace{0.3em}%
+}
+\newcommand{\quadrofonte}[1]{\par\noindent\textit{Fonte: #1}\vspace{1em}\par}
+
+% ── URL e Hyperlinks ─────────────────────────────────────────────────────────
+\usepackage{url}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks, colorlinks=false, breaklinks=true]{hyperref}
+
+% ── Figuras ──────────────────────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{float}
+
+\date{}
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+% ══════════════════════════════════════════════════════════════════════════════
+% CAPA — NBR 14724/2024
+% ══════════════════════════════════════════════════════════════════════════════
+\begin{titlepage}
+  \thispagestyle{empty}
+  \begin{center}
+
+    \includegraphics[width=0.25\textwidth]{../../../logo_ifb_despro.png}\\[1.8em]
+
+    {\normalsize\bfseries
+      Instituto Federal de Educação, Ciência e Tecnologia de Brasília --- IFB\\[0.3em]
+      \textit{Campus} Samambaia\\[0.3em]
+      Curso Superior de Tecnologia em Design de Produto
+    }
+
+    \vfill
+
+    {\large\bfseries
+      PERSONA E PESQUISA DE MERCADO --- LUMINÁRIA DE MESA
+    }\\[1.2em]
+
+    {\normalsize
+      Atividade 3: Persona e Pesquisa de Mercado
+    }
+
+    \vfill
+
+    {\normalsize Brasília/DF\\2026}
+
+  \end{center}
+\end{titlepage}
+\setcounter{page}{2}
+
+% ══════════════════════════════════════════════════════════════════════════════
+% FOLHA DE ROSTO — NBR 14724/2024
+% ══════════════════════════════════════════════════════════════════════════════
+\begin{titlepage}
+  \thispagestyle{empty}
+  \begin{center}
+
+    {\normalsize\bfseries VICTOR COSTA · ANNA JI · LUÍS COSTA}
+
+    \vfill
+
+    {\large\bfseries PERSONA E PESQUISA DE MERCADO --- LUMINÁRIA DE MESA}
+
+    \vfill
+
+    \begin{flushright}
+      \begin{minipage}{0.5\textwidth}
+        \normalsize
+        Atividade apresentada ao Curso Superior de Tecnologia em Design de Produto
+        do Instituto Federal de Educação, Ciência e Tecnologia de Brasília --
+        Campus Samambaia, como requisito parcial para a aprovação na disciplina
+        de Metodologia e Prática de Projeto.
+
+        \vspace{1em}
+        Professora: Profª. Fernanda Freitas Costa de Torres
+      \end{minipage}
+    \end{flushright}
+
+    \vfill
+
+    {\normalsize Brasília/DF -- 2026}
+
+  \end{center}
+\end{titlepage}
+
+% ══════════════════════════════════════════════════════════════════════════════
+% RESUMO — NBR 6028/2003
+% ══════════════════════════════════════════════════════════════════════════════
+\clearpage
+\thispagestyle{empty}
+\begin{center}
+  {\normalsize\bfseries RESUMO}
+\end{center}
+
+\vspace{1em}
+\noindent
+Este documento apresenta a persona e a pesquisa de mercado para o projeto de
+luminária de mesa desenvolvido na disciplina de Metodologia e Prática de Projeto.
+A persona é construída a partir do perfil do público-alvo definido no briefing:
+mulher de 40 a 45 anos, profissional liberal, moradora do Noroeste em Brasília,
+com alto poder aquisitivo e consumo orientado por critérios estéticos e culturais.
+A pesquisa de mercado mapeia o segmento de luminárias de design premium no Brasil,
+identificando referências, faixas de preço e lacunas de mercado com implicações
+diretas para o projeto.
+
+\vspace{1em}
+\noindent\textbf{Palavras-chave:} persona; pesquisa de mercado; luminária de mesa;
+design autoral; mercado premium.
+
+% ══════════════════════════════════════════════════════════════════════════════
+% LISTA DE QUADROS
+% ══════════════════════════════════════════════════════════════════════════════
+\clearpage
+\thispagestyle{empty}
+\listofquadros
+
+% ══════════════════════════════════════════════════════════════════════════════
+% SUMÁRIO — NBR 14724/2024
+% ══════════════════════════════════════════════════════════════════════════════
+\clearpage
+\thispagestyle{empty}
+\tableofcontents
+
+% ══════════════════════════════════════════════════════════════════════════════
+% CONTEÚDO
+% ══════════════════════════════════════════════════════════════════════════════
+
+\section{Persona}
+
+\subsection{Perfil Geral}
+
+\noindent\textbf{Nome:} Beatriz Andrade\\[0.3em]
+\noindent\textbf{Idade:} 43 anos\\[0.3em]
+\noindent\textbf{Profissão:} Arquiteta sócia de escritório de pequeno porte
+especializado em interiores residenciais\\[0.3em]
+\noindent\textbf{Renda mensal:} R\$ 18.000--22.000\\[0.3em]
+\noindent\textbf{Estado civil:} Divorciada, dois filhos adultos que não moram
+com ela\\[0.3em]
+\noindent\textbf{Moradia:} Apartamento de 110 m\textsuperscript{2} no Noroeste,
+Brasília, comprado há quatro anos e reformado por ela mesma
+
+\subsection{Estilo de Vida}
+
+Beatriz acorda às 6h30, lê o jornal no tablet enquanto toma café, e chega ao
+escritório por volta das 8h30. Trabalha com clientes exigentes e tem o hábito de
+pesquisar referências de design continuamente, não como obrigação profissional, mas
+como prazer cultivado desde a graduação. Suas férias são planejadas em torno de
+cidades com arquitetura relevante: já foi a São Paulo para visitar a Bienal, a
+Buenos Aires para ver museus e a Lisboa para caminhar pelos bairros históricos.
+
+O apartamento dela é o laboratório permanente de seus próprios gostos. Ela troca
+objetos com frequência, não por insatisfação compulsiva, mas porque encontra peças
+melhores à medida que seu repertório cresce. A televisão foi abolida da sala de
+estar há três anos: no lugar, uma estante de livros e um quadro de artista
+brasiliense. O som ambiente é sempre algum jazz ou MPB instrumental.
+
+Aos finais de semana, frequenta feiras de design, ateliês de cerâmica e livrarias
+especializadas. Tem uma lista mental de objetos que ``vai comprar um dia'' e às
+vezes esses objetos chegam de presente antes que ela os compre.
+
+\subsection{Relação com Design e Objetos}
+
+Beatriz compra poucos objetos, mas compra bem. A lógica que ela usa é simples:
+prefere ter menos e ter melhor. Um objeto barato que ela troca em dois anos custa
+mais, no final, do que um objeto caro que dura vinte.
+
+Ela reconhece marcas de design sem precisar que elas se anunciem. Tem duas
+luminárias Lumini no escritório, uma cadeira Zanine Caldas reproduzida em marceneiro
+de confiança e um vaso de Takashi Murakami que ganhou de um cliente e que considera
+``bonito demais para onde está, mas sem lugar melhor ainda''. Conhece Artemide,
+Anglepoise e Flos, não porque as tem, mas porque sabe o que elas representam.
+
+O que ela não tolera: objetos que parecem mais do que são. Acabamento que simula
+material, laminado que imita madeira, plástico pintado de metal. Ela identifica isso
+em segundos e a ilusão a incomoda mais do que o material simples honesto.
+
+\subsection{Relação com a Luminária}
+
+A luminária que ela receberia de presente provavelmente ficaria no quarto, sobre
+o criado-mudo do lado esquerdo da cama, o lado em que ela lê antes de dormir. O
+criado-mudo já tem uma luminária, mas é de um conjunto comprado na reforma e ela
+nunca gostou completamente.
+
+O que ela esperaria de uma luminária nova: que a luz fosse boa (quente, sem ofuscar),
+que o objeto tivesse personalidade quando apagado, e que os materiais fossem reais.
+Se for madeira, que seja madeira de verdade. Se for vidro, que se veja que foi feito
+à mão.
+
+O que a frustraria: descobrir que o difusor é plástico translúcido, que o cabo é
+aquele fio branco padrão de luminária de loja de R\$ 49,90, ou que o ``latão'' é na
+verdade alumínio pintado que descasca em seis meses.
+
+A frase que a define: \textit{``Eu não compro objetos. Eu escolho companhia para
+um espaço.''}
+
+\section{Pesquisa de Mercado}
+
+\subsection{Panorama do Segmento no Brasil}
+
+O mercado de luminárias de design no Brasil pode ser dividido em três camadas: o
+segmento popular (até R\$ 300, dominado por grandes varejistas e importação asiática),
+o segmento intermediário (R\$ 300--800, com fabricantes nacionais e importados sem
+posicionamento autoral forte) e o segmento premium/autoral (acima de R\$ 800, com
+design assinado, materiais nobres e produção limitada).
+
+O segmento premium é o menos consolidado no Brasil, mas vem crescendo desde meados
+dos anos 2010, impulsionado pela expansão do mercado de interiores de alto padrão,
+pelo interesse crescente em design nacional e pela maior circulação de referências
+internacionais via redes sociais e publicações especializadas.
+
+Brasília, em particular, tem um mercado consumidor de design bem desenvolvido para
+uma cidade que não é o principal polo de produção do setor. A presença de profissionais
+liberais e servidores públicos de alta remuneração, combinada com a cultura
+arquitetônica da cidade, cria uma base de compradores sofisticados que precisam de
+oferta à altura.
+
+\subsection{Referências de Produtos e Marcas}
+
+\noindent\textbf{Lumini (Brasil):} Uma das marcas mais reconhecidas de iluminação de
+design no Brasil. Trabalha com linha residencial e arquitetural, com produtos a partir
+de R\$ 600 e luminárias de mesa entre R\$ 1.200 e R\$ 3.500. Ponto forte: qualidade
+técnica e distribuição nacional. Ponto fraco: linguagem formal mais próxima do
+minimalismo industrial do que do design autoral com materialidade artesanal.
+
+\noindent\textbf{Dpot (Brasil):} Multimarca com curadoria de design nacional e
+internacional. Distribui peças de autores brasileiros e representa marcas europeias.
+Referência de ambiente para o público-alvo, mas com preços que colocam a luminária
+de mesa entre R\$ 2.000 e R\$ 8.000, teto acima do posicionamento deste projeto.
+
+\noindent\textbf{Artemide (Itália):} Marca de referência mundial. Luminárias de mesa
+a partir de R\$ 2.500 no mercado brasileiro. Design icônico, qualidade técnica
+incomparável. Funciona mais como referência estética do que como concorrente direto,
+dado o diferencial de preço e a ausência de identidade brasileira.
+
+\noindent\textbf{Anglepoise (Reino Unido):} Reconhecida pela lamp Type 75 e seus
+derivados. Preço no Brasil entre R\$ 1.800 e R\$ 3.200. Forte apelo ao público com
+gosto clássico-contemporâneo. Não tem identidade de material artesanal, é
+essencialmente metal industrial, o que a diferencia do posicionamento deste projeto.
+
+\noindent\textbf{Produtores independentes brasileiros:} Há um conjunto crescente de
+ateliês e designers independentes que produzem luminárias com materiais naturais,
+madeira, cerâmica, couro, rattan, com preços entre R\$ 700 e R\$ 2.000 e distribuição
+principalmente via Instagram e feiras de design. Esse é o segmento mais próximo do
+projeto em termos de linguagem e processo, e o menos consolidado em termos de marca
+e alcance.
+
+\subsection{Análise de Preço}
+
+O Quadro 1 apresenta a segmentação do mercado de luminárias de design no Brasil por
+faixa de preço e perfil de produto.
+
+\quadrotitle{1}{Segmentação do mercado de luminárias de design no Brasil}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{\dimexpr(\linewidth - 4\tabcolsep)*20/100\relax}
+  >{\raggedright\arraybackslash}p{\dimexpr(\linewidth - 4\tabcolsep)*25/100\relax}
+  >{\raggedright\arraybackslash}p{\dimexpr(\linewidth - 4\tabcolsep)*55/100\relax}
+  @{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Segmento}
+\end{minipage} &
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Faixa de preço}
+\end{minipage} &
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Perfil de produto}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Popular & até R\$ 300 & Importado, plástico, sem identidade autoral \\
+Intermediário & R\$ 300--800 & Nacional ou importado, materiais mistos, design
+genérico \\
+Premium nacional & R\$ 800--2.000 & Design autoral, materiais nobres, pequena série \\
+Premium importado & R\$ 2.000--8.000+ & Marcas internacionais, design icônico \\
+\end{longtable}
+
+\quadrofonte{elaborado pelos autores.}
+
+O posicionamento-alvo deste projeto é \textbf{premium nacional}, entre R\$ 900 e
+R\$ 1.800, com diferenciação por identidade cultural brasileira e materialidade
+artesanal.
+
+\subsection{Lacunas Identificadas}
+
+A pesquisa aponta três lacunas que o projeto pode explorar:
+
+\noindent\textbf{1. Identidade cultural explícita sem ser folclórica.} Produtos
+brasileiros no segmento autoral frequentemente oscilam entre o minimalismo genérico
+(que poderia ser de qualquer país) e o regionalismo excessivo (com elementos que
+remetem mais ao artesanato popular do que ao design contemporâneo). Há espaço para
+uma linguagem que dialogue com a arquitetura modernista de Brasília, sofisticada,
+geométrica e ao mesmo tempo com presença, sem cair no pastiche.
+
+\vspace{0.5em}
+\noindent\textbf{2. Materiais artesanais com acabamento de nível premium.} Muitos
+produtos independentes com boa proposta de material têm execução que não sustenta o
+preço: vedações irregulares, cabos mal fixados, difusores com variação de espessura
+visível. O público-alvo paga mais, mas exige que o objeto entregue o que promete ao
+toque, não só na fotografia.
+
+\vspace{0.5em}
+\noindent\textbf{3. Objeto funcional nos dois estados.} Grande parte das luminárias
+autorais brasileiras são interessantes acesas, mas discretas quando apagadas. A dupla
+função, objeto decorativo quando desligado e fonte de luz quando ligado, é pouco
+explorada no segmento e altamente valorizada pelo público que decora com intenção.
+
+\subsection{Implicações para o Projeto}
+
+A pesquisa confirma o posicionamento definido no briefing e adiciona três implicações:
+
+\begin{itemize}
+\tightlist
+\item O acabamento precisa ser executado com rigor técnico equivalente ao de marcas
+  consolidadas, mesmo que a produção seja artesanal de pequeno porte. A diferença
+  entre R\$ 900 e R\$ 400 está principalmente na execução, não no conceito.
+\item A comunicação do produto (embalagem, etiquetas, eventual catálogo) é parte
+  inseparável do valor percebido no contexto de presente. Um objeto bem embalado e
+  bem documentado se vende como presente mesmo sem o comprador ter visto o produto
+  ao vivo.
+\item A identidade cultural deve ser legível para quem tem repertório, mas não precisa
+  de explicação. O freijó precisa ser identificável como madeira brasileira para quem
+  conhece, e belo para quem não conhece.
+\end{itemize}
+
+\section{Referências}\label{referencias}
+
+BÜRDEK, Bernhard E. \textbf{Design}: história, teoria e prática do design de produtos.
+São Paulo: Edgard Blücher, 2006.
+
+DESIGN BRASIL. \textbf{Panorama do design brasileiro 2024}. São Paulo: Museu da Casa
+Brasileira, 2024.
+
+MORAES, Dijon de. \textbf{Metaprojeto}: o design do design. São Paulo: Edgard Blücher,
+2010.
+
+NORMAN, Donald A. \textbf{Design emocional}: por que adoramos (ou detestamos) os objetos
+do dia a dia. Rio de Janeiro: Rocco, 2008.
+
+\end{document}
