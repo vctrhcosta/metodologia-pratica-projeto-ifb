@@ -1,0 +1,14 @@
+.DS_Store
+*.aux
+*.log
+*.lof
+*.loq
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+missfont.log
+texput.log
+node_modules/
+Metodologia - Luminária Laje.pdf
